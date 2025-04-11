@@ -14,6 +14,7 @@ client = AzureOpenAI(
     api_key=API_KEY,
     api_version=API_VERSION,
 )
+
  
 @app.route("/")
 def home():
@@ -27,7 +28,10 @@ def chat():
  
     response = client.chat.completions.create(
         model=MODEL_NAME,
-        messages=[{"role": "user", "content": user_input}],
+        messages=[
+            {"role": "system",
+             "content": "You are a Key Stage 1 teacher who is trying to teach children basic literacy and math fundamentals as simple as possible. Only produce content that is appropriate for children of that age."},
+            {"role": "user", "content": user_input}],
     )
  
     reply = response.choices[0].message.content.strip()
