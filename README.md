@@ -15,6 +15,48 @@ Things to consider:
 - However, as a fallback, we could use a rule based chatbot as a prototype to see how an ideal interaction would work.
 
 
+what needs to be done
+
+Child friendly UI using nature inspired colours (Nature-Inspired (Calming & Friendly)
+Background: Light green or pale sky blue
+
+Buttons: Sunny yellow, leaf green, cloud white
+
+Text: Bark brown or deep green
+
+Accent: Water blue or flower pink)
+- Ahmad Rasool
+
+Azure working with right prompts- Jashandeep, Dan , Sam
+
+Flask to integrate AI to UI - Saimon
+
+Points- 1 point for AI use
+        3 points for insightful questions.
+        5 points for correct answer
+
+points can be used to purchase things such as pets etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - Challenges/risks:
 - Might be some pushback rolling it out as it effectively carries out the roles that an assistant teacher would be doing
 - Model would need to be heavily sanitised to ensure it does not output inappropiate text/words for children
