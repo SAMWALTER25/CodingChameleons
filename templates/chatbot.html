@@ -19,13 +19,20 @@
         <button class="back-btn" onclick="window.location.href='/welcome'">⬅️ Back to Welcome</button>
       </div>
 
+      <!-- Dropdown -->
+      <div class="dropdown">
+        <button onclick="toggleDropdown()" id="dropdownButton" class="dropbtn">Default</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#" onclick="selectOption('Default')">Default</a>
+          <a href="#" onclick="selectOption('Minecraft')">Minecraft</a>
+          <a href="#" onclick="selectOption('Roblox')">Roblox</a>
+        </div>
+      </div>
+
+      <!-- Chat Area -->
       <div class="chat-area">
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Type your question here..."
-        />
-        <button onclick="getBotResponse()">Ask</button>
+        <input type="text" id="userInput" placeholder="Type your question here..." />
+        <button onclick="sendMessage()">Ask</button>
       </div>
 
       <!-- Answer Section -->
@@ -33,7 +40,7 @@
         <p>I'll answer your questions here!</p>
       </div>
 
-      <!-- Navigation Buttons under the Search Bar -->
+      <!-- Navigation Buttons -->
       <div class="footer-nav">
         <button onclick="window.location.href='/welcome'">🏠 Home</button>
         <button onclick="window.location.href='/chatbot'">💬 Chatbot</button>
@@ -45,18 +52,66 @@
     <div class="tree"></div>
   </div>
 
-  <!-- Optional script for future functionality -->
+  <!-- Script -->
   <script>
-    // Future script for handling chat responses (not implemented yet)
-    function getBotResponse() {
-      // Placeholder function to simulate interaction
-      const userInput = document.getElementById('userInput').value;
-      const chatResponse = document.getElementById('chatResponse');
-      if (userInput.trim()) {
-        chatResponse.innerHTML = `<p>You asked: ${userInput}</p><p>Here's the bot's response!</p>`;
-      } else {
-        chatResponse.innerHTML = `<p>Please type a question!</p>`;
+    let selectedOption = "Default";
+
+    function toggleDropdown() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function selectOption(option) {
+      selectedOption = option;
+      document.getElementById("dropdownButton").textContent = option;
+      document.getElementById("myDropdown").classList.remove("show");
+    }
+
+    // Close dropdown if user clicks outside
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
       }
+    }
+
+    // Send message to backend
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chatResponse = document.getElementById("chatResponse");
+
+      const rawMessage = input.value.trim();
+      if (!rawMessage) {
+        chatResponse.innerHTML = `<p>Please type a question!</p>`;
+        return;
+      }
+
+      input.value = "";
+
+      // Construct final message based on selected option
+      const message = selectedOption !== "Default"
+        ? `${rawMessage} with a ${selectedOption} prompt`
+        : rawMessage;
+
+      chatResponse.innerHTML = `<p>You asked: ${message}</p><p>Thinking...</p>`;
+
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          message: message,
+          category: selectedOption  // Optional: still sends category if needed
+        })
+      });
+
+      const data = await response.json();
+      chatResponse.innerHTML = `<p>You asked: ${message}</p><p>Bot: ${data.response}</p>`;
     }
   </script>
 </body>
