@@ -20,6 +20,17 @@ client = AzureOpenAI(
 def home():
     return render_template("welcome.html")
 
+#settings
+@app.route("/settings")
+def settings():
+    return render_template("Settings.html")
+
+
+@app.route("/pets")
+def pets():
+    return render_template("pets.html")
+
+
 # Directs to chatbot page
 @app.route("/chatbot")
 def chatbot():
