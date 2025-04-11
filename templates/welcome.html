@@ -58,7 +58,24 @@
             margin-bottom: 20px;
         }
 
-        .buttons {
+        .buttons a {
+            padding: 0.8rem 1.5rem;
+            background-color: #f6d7b9; /* Soft yellow */
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Arial Rounded MT Bold', sans-serif;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+.buttons a:hover {
+    background-color: #f2bc8a; /* Hover color */
+}
+.buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
