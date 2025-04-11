@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: #87CEEB; /* Sky blue */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .sun {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+        }
+
+        .sun img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill; /* Stretch the image to fit container */
+        }
+
+        .cloud {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .cloud:nth-child(2) {
+            top: 200px;
+            left: 100px;
+        }
+
+        .cloud:nth-child(3) {
+            top: 150px;
+            right: 100px;
+        }
+
+        .cloud:nth-child(4) {
+            bottom: 200px;
+            right: 50px;
+        }
+
+        .welcome-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            gap: 20px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            background-color: darkblue;
+            border-radius: 5px;
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: #32CD32; /* Green */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="sun.png" alt="sun" class="sun">
+
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+
+    <div class="welcome-text">Welcome</div>
+
+    <div class="buttons">
+        <a href="/chatbot">Chatbot</a>
+        <a href="/settings">Settings</a>
+        <a href="/pets">Pets</a>
+    </div>
+
+    <div class="ground"></div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+
+            // Show clouds after 200px scroll
+            if (scrollPosition > 200) {
+                document.querySelectorAll('.cloud').forEach(cloud => {
+                    cloud.style.opacity = 1;
+                });
+            }
+
+            // Show buttons and ground after 400px scroll
+            if (scrollPosition > 400) {
+                document.querySelector('.button-container').style.display = 'flex';
+                document.querySelector('.ground').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
