@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Settings - Ahmad Rasool</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', sans-serif;
+      background-color: #d0f0c0; /* light green */
+      color: #4B3621; /* bark brown */
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e8b57; /* deep green */
+      margin-bottom: 30px;
+    }
+
+    .settings-group {
+      margin-bottom: 25px;
+      padding: 15px;
+      background-color: #f0f8ff; /* flower-pinkish light */
+      border: 2px solid #add8e6; /* water blue */
+      border-radius: 10px;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: block;
+      font-size: 18px;
+    }
+
+    select, input[type="radio"], input[type="checkbox"] {
+      margin-top: 10px;
+    }
+
+    .font-size-options label {
+      margin-right: 20px;
+      font-size: 16px;
+    }
+
+    .save-button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #fdd835; /* sunny yellow */
+      color: #2e8b57; /* deep green */
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    .save-button:hover {
+      background-color: #c6e377; /* lighter leaf green */
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #add8e6;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+      transform: scale(1.3);
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Settings</h1>
+
+  <div class="settings-group">
+    <label class="label">🅰️ Font Size:</label>
+    <div class="font-size-options">
+      <label><input type="radio" name="font-size" value="small"> Small</label>
+      <label><input type="radio" name="font-size" value="medium" checked> Medium</label>
+      <label><input type="radio" name="font-size" value="large"> Large</label>
+    </div>
+  </div>
+
+  <div class="settings-group">
+    <label class="label">🎬 Captions:</label>
+    <label><input type="checkbox" id="captions"> Enable captions</label>
+  </div>
+
+  <div class="settings-group">
+    <label class="label">🌍 Language:</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="ur">Urdu</option>
+      <option value="bn">Bengali</option>
+      <option value="so">Somali</option>
+      <option value="pl">Polish</option>
+      <option value="ar">Arabic</option>
+    </select>
+  </div>
+
+  <div style="text-align: center;">
+    <button class="save-button">✅ Save Settings</button>
+  </div>
+
+</body>
+</html>

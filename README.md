@@ -37,26 +37,6 @@ Points- 1 point for AI use
 
 points can be used to purchase things such as pets etc.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 - Challenges/risks:
 - Might be some pushback rolling it out as it effectively carries out the roles that an assistant teacher would be doing
 - Model would need to be heavily sanitised to ensure it does not output inappropiate text/words for children
