@@ -32,11 +32,16 @@
             position: absolute;
             width: 200px;
             height: 100px;
-            background-color: white;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: transparent;
+            background-image: url('cloud.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             opacity: 0;
             transition: opacity 0.5s ease-in-out;
-        }
+            z-index: 1;
+            }
+
 
         .cloud:nth-child(2) { top: 200px; left: 100px; }
         .cloud:nth-child(3) { top: 150px; right: 100px; }
@@ -88,7 +93,6 @@
             position: relative;
             margin: 60px auto 20px auto;
             margin-top: 100px;
-            margin-bottom: 200px;
             padding: 20px;
             max-width: 600px;
             font-size: 22px;
@@ -104,9 +108,9 @@
 <body>
     <img src="sun.png" alt="sun" class="sun">
 
-    <div class="cloud"></div>
-    <div class="cloud"></div>
-    <div class="cloud"></div>
+    <img src="cloud.png" class="cloud" alt="">
+    <img src="cloud.png" class="cloud" alt="">
+    <img src="cloud.png" class="cloud" alt="">
 
     <div class="welcome-section">
         <div class="welcome-text">Welcome</div>
@@ -136,9 +140,6 @@
                 });
             }
 
-            // Show buttons and ground after 400px scroll
-            if (scrollPosition > 400) {
-                document.querySelector('.button-container').style.display = 'flex';
             if (scrollPosition > 200) {
                 document.querySelector('.ground').style.display = 'block';
             }
