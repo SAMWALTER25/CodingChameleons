@@ -21,9 +21,9 @@ def home():
     return render_template("welcome.html")
 
 # Directs to chatbot page
-@app.route("/sprout-ai")
+@app.route("/chatbot")
 def chatbot():
-    return render_template("index.html")
+    return render_template("chatbot.html")
 
 # Runs chatbot
 @app.route("/chat", methods=["POST"])
