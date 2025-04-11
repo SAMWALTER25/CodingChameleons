@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Azure GPT Chat</title>
+<style>
+    body { font-family: sans-serif; margin: 40px; }
+    input[type="text"] { width: 70%; padding: 10px; font-size: 1rem; }
+    button { padding: 10px; font-size: 1rem; }
+    #chat { margin-top: 20px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<h1>Chat with Azure GPT-4</h1>
+<input type="text" id="userInput" placeholder="Type your message here..." />
+<button onclick="sendMessage()">Send</button>
+ 
+  <div id="chat"></div>
+ 
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chat");
+ 
+      const message = input.value;
+      input.value = "";
+ 
+      chat.innerHTML += "You: " + message + "\n";
+ 
+      const response = await fetch("/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: message })
+      });
+ 
+      const data = await response.json();
+      chat.innerHTML += "Bot: " + data.response + "\n\n";
+    }
+</script>
+</body>
+</html>
