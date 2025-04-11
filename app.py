@@ -15,15 +15,17 @@ client = AzureOpenAI(
     api_version=API_VERSION,
 )
 
- 
+# Directs to welcome page first 
 @app.route("/")
 def home():
     return render_template("welcome.html")
 
-@app.route("/chatbot")
+# Directs to chatbot page
+@app.route("/sprout-ai")
 def chatbot():
     return render_template("index.html")
- 
+
+# Runs chatbot
 @app.route("/chat", methods=["POST"])
 def chat():
     user_input = request.json.get("message", "")
