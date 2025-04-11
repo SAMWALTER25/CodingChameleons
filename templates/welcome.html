@@ -11,6 +11,7 @@
             background-color: #87CEEB; /* Sky blue */
             color: white;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         .sun {
@@ -24,7 +25,7 @@
         .sun img {
             width: 100%;
             height: 100%;
-            object-fit: fill; /* Stretch the image to fit container */
+            object-fit: fill;
         }
 
         .cloud {
@@ -37,61 +38,67 @@
             transition: opacity 0.5s ease-in-out;
         }
 
-        .cloud:nth-child(2) {
-            top: 200px;
-            left: 100px;
-        }
+        .cloud:nth-child(2) { top: 200px; left: 100px; }
+        .cloud:nth-child(3) { top: 150px; right: 100px; }
+        .cloud:nth-child(4) { bottom: 200px; right: 50px; }
 
-        .cloud:nth-child(3) {
-            top: 150px;
-            right: 100px;
-        }
-
-        .cloud:nth-child(4) {
-            bottom: 200px;
-            right: 50px;
+        .welcome-section {
+            position: relative;
+            top: 50vh;
+            transform: translateY(-50%);
         }
 
         .welcome-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             font-size: 48px;
-        }
-
-        .button-container {
-            position: absolute;
-            bottom: 150px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: none;
-            gap: 20px;
+            margin-bottom: 20px;
         }
 
         .buttons {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 500px;
         }
+
         .buttons a {
-            display: inline-block;
-            margin: 10px;
             padding: 10px 20px;
             font-size: 18px;
             text-decoration: none;
             color: white;
             background-color: darkblue;
             border-radius: 5px;
+            margin-bottom: 200px;
         }
 
         .ground {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
-            background-color: #32CD32; /* Green */
-            display: none;
+            height: 200px;
+            background: linear-gradient(to top, #3CB371 60%, #6B8E23 100%);
+            border-top-left-radius: 50% 20%;
+            border-top-right-radius: 50% 20%;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
+            z-index: -1;
+            display: block; /* Now always visible */
         }
+
+        .bot-description {
+            position: relative;
+            margin: 60px auto 20px auto;
+            margin-top: 100px;
+            margin-bottom: 200px;
+            padding: 20px;
+            max-width: 600px;
+            font-size: 22px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
     </style>
 </head>
 <body>
@@ -101,12 +108,20 @@
     <div class="cloud"></div>
     <div class="cloud"></div>
 
-    <div class="welcome-text">Welcome</div>
-
-    <div class="buttons">
-        <a href="/chatbot">Chatbot</a>
-        <a href="/settings">Settings</a>
-        <a href="/pets">Pets</a>
+    <div class="welcome-section">
+        <div class="welcome-text">Welcome</div>
+        <div class="bot-description">
+            <p>
+                <strong>Meet SproutAI – Your Friendly AI Helper!</strong><br>
+                SproutAI is a fun and caring AI chatbot designed especially for children with disabilities. Whether it's helping with learning, answering questions, or just having a friendly chat, BuddyBot is always here to support, listen, and make every child feel seen and heard.
+            </p>
+        </div>
+        </p></div>
+        <div class="buttons">
+            <a href="/chatbot">Chatbot</a>
+            <a href="/settings">Settings</a>
+            <a href="/pets">Pets</a>
+        </div>
     </div>
 
     <div class="ground"></div>
@@ -115,8 +130,7 @@
         window.addEventListener('scroll', function() {
             const scrollPosition = window.scrollY;
 
-            // Show clouds after 200px scroll
-            if (scrollPosition > 200) {
+            if (scrollPosition > 100) {
                 document.querySelectorAll('.cloud').forEach(cloud => {
                     cloud.style.opacity = 1;
                 });
