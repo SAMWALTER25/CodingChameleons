@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SproutAI Chatbot | /chatbot</title>
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+  <div class="background">
+    <div class="sun"></div>
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+
+    <main class="chatbot-box">
+      <div class="chat-header">
+        <h1>🌿 Welcome to the SproutAI Chatbot Page</h1>
+        <p>Ask me anything about numbers or words! 🧠</p>
+        <button class="back-btn" onclick="window.location.href='/welcome'">⬅️ Back to Welcome</button>
+      </div>
+
+      <div class="chat-area">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your question here..."
+        />
+        <button onclick="getBotResponse()">Ask</button>
+      </div>
+
+      <!-- Answer Section -->
+      <div id="chatResponse" class="bot-response">
+        <p>I'll answer your questions here!</p>
+      </div>
+
+      <!-- Navigation Buttons under the Search Bar -->
+      <div class="footer-nav">
+        <button onclick="window.location.href='/welcome'">🏠 Home</button>
+        <button onclick="window.location.href='/chatbot'">💬 Chatbot</button>
+        <button>🐶 Pets</button>
+        <button>⚙️ Settings</button>
+      </div>
+    </main>
+
+    <div class="tree"></div>
+  </div>
+
+  <!-- Optional script for future functionality -->
+  <script>
+    // Future script for handling chat responses (not implemented yet)
+    function getBotResponse() {
+      // Placeholder function to simulate interaction
+      const userInput = document.getElementById('userInput').value;
+      const chatResponse = document.getElementById('chatResponse');
+      if (userInput.trim()) {
+        chatResponse.innerHTML = `<p>You asked: ${userInput}</p><p>Here's the bot's response!</p>`;
+      } else {
+        chatResponse.innerHTML = `<p>Please type a question!</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
